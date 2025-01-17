@@ -1,0 +1,10 @@
+table, th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hightlight {
+    color: red;
+    font-weight: bold
+}
+
