@@ -4,100 +4,116 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<form id="productForm" onsubmit="saveProduct(); return false;">
-    <table>
-        <tr>
-            <div>
-                <td><label for="img">Hình ảnh sản phẩm:</label></td>
-                <td><input type="text" id="img" name="img"></td>
-            </div>
-        </tr>
-        <tr>
-            <div>
-                <td>
-                    <lable for="name">Tên sản phẩm:</lable>
-                </td>
-                <td><input type="text" id="name" name="name"></td>
-            </div>
-        </tr>
-        <tr>
-            <div>
-                <td>
-                    <lable for="price">Giá sản phẩm:</lable>
-                </td>
-                <td><input type="number" id="price" name="price"></td>
-            </div>
-        </tr>
-        <tr>
-            <div>
-                <td>
-                    <lable for="category">Danh mục:</lable>
-                </td>
-                <td><select name="category" id="category">
-                    <option>-Chọn danh mục-</option>
-                    <option>Điện thoại di động</option>
-                    <option>Phụ kiện</option>
-                    <option>Laptop</option>
-                </select>
-                </td>
-            </div>
-        </tr>
-        <tr>
-            <div>
-                <td>
-                    <lable for="description">Mô tả sản phẩm:</lable>
-                </td>
-                <td><textarea type="text" id="description" name="description"></textarea></td>
-            </div>
-        </tr>
-        <tr>
-            <div>
-                <td>
-                    <lable for="status">Trạng thái:</lable>
-                </td>
-                <td><select name="status" id="status">
-                    <option>-Chọn trạng thái-</option>
-                    <option>Còn hàng</option>
-                    <option>sắp về hàng</option>
-                    <option>Hết hàng</option>
-                </select>
-                </td>
-            </div>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">Lưu</button>
-            </td>
-        </tr>
+<div class="p-3 mb-2 bg-dark text-white">
+    <h2><b>Trang quản lý sản phẩm</b></h2><br>
+    <div class="input-group mb-3" style="width: 40%;">
+        <input id="searchInput" type="text" class="form-control" placeholder="Nhập tên sản phẩm"
+               aria-label="Recipient's username"
+               aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" onclick="handleSearch()">Search</button>
+    </div>
 
-    </table>
+</div>
 
-</form>
+<div class="form-container">
+    <form id="productForm" onsubmit="saveProduct(); return false;">
+        <table>
+            <tr>
+                <div>
+                    <td><label class="form-lable" for="image"><b>Hình ảnh sản phẩm:</b></label></td>
+                    <td><input class="form-control" type="text" id="image" name="img" required></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td>
+                        <lable class="form-lable" for="name"><b>Tên sản phẩm:</b></lable>
+                    </td>
+                    <td><input class="form-control" type="text" id="name" name="name" required></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td>
+                        <lable class="form-lable" for="price"><b>Giá sản phẩm:</b></lable>
+                    </td>
+                    <td><input class="form-control" type="number" id="price" name="price" required></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td>
+                        <lable class="form-lable" for="category"><b>Danh mục:</b></lable>
+                    </td>
+                    <td><select class="form-control" name="category" id="category" required>
+                        <option>-Chọn danh mục-</option>
+                        <option>Điện thoại di động</option>
+                        <option>Phụ kiện</option>
+                        <option>Laptop</option>
+                    </select>
+                    </td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td>
+                        <lable class="form-lable" for="description"><b>Mô tả sản phẩm:</b></lable>
+                    </td>
+                    <td><textarea class="form-control" type="text" id="description" name="description"
+                                  required></textarea></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td>
+                        <lable for="status"><b>Trạng thái:</b></lable>
+                    </td>
+                    <td><select class="form-control" name="status" id="status" required>
+                        <option>-Chọn trạng thái-</option>
+                        <option>Còn hàng</option>
+                        <option>Sắp về hàng</option>
+                        <option>Hết hàng</option>
+                    </select>
+                    </td>
+                </div>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary" type="submit">Lưu</button>
+                </td>
+            </tr>
 
-<form>
-    <table border="1" width="100%" class="table table-hover">
-        <thead>
-        <tr>
-            <th></th>
-            <th width="120">Tên sản phẩm</th>
-            <th width="120">Giá sản phẩm</th>
-            <th width="120">Danh mục</th>
-            <th width="300">Mô tả</th>
-            <th width="120">Tình trạng</th>
-            <th width="120">Chỉnh sửa</th>
-        </tr>
-        </thead>
-        <tbody id="tableData"></tbody>
-    </table>
-</form>
+        </table>
 
+    </form>
+
+    <form>
+        <table border="2" width="100%" class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th width="120">Tên sản phẩm</th>
+                <th width="120">Giá sản phẩm</th>
+                <th width="120">Danh mục</th>
+                <th width="300">Mô tả</th>
+                <th width="120">Tình trạng</th>
+                <th width="120">Chỉnh sửa</th>
+            </tr>
+            </thead>
+            <tbody id="tableData"></tbody>
+        </table>
+    </form>
+</div>
 <script>
     class Product {
         constructor(image, name, price, category, description, status) {
@@ -110,41 +126,114 @@
         }
     }
 
-    const iphone16 = new Product('https://pngimg.com/d/iphone16_PNG3.png', "Iphone 16", "20.990.000", "Điện thoại di động", "Máy mới 100%, 128GB, màu đen.iPhone chính hãng VN/A của Apple Việt Nam.1 ĐỔI 1 trong 30 ngày nếu có lỗi phần cứng nhà sản xuất. Bảo hành 12 tháng tại trung tâm bảo hành chính hãng Apple: CareS.vn", "Đang hoạt động");
-    const productList = [];
-    productList.push(iphone16);
+    const iphone16 = new Product('https://pngimg.com/d/iphone16_PNG3.png', "Iphone 16", 20990000, "Điện thoại di động", "Máy mới 100%, 128GB, màu đen.iPhone chính hãng VN/A của Apple Việt Nam.1 ĐỔI 1 trong 30 ngày nếu có lỗi phần cứng nhà sản xuất. Bảo hành 12 tháng tại trung tâm bảo hành chính hãng Apple: CareS.vn", "Còn hàng");
+    const samsungS24Ultra = new Product('https://smartviets.com/upload/Galaxy%20SS-%20Series/S24%20Series/S24%20Ultra%20tim.png', "Samsung S24 Ultra", 24000000, "Điện thoại di động", "Máy mới 100%, 128GB, màu đen.1 ĐỔI 1 trong 30 ngày nếu có lỗi phần cứng nhà sản xuất. Bảo hành 12 tháng tại trung tâm bảo hành chính hãng Samsung: CareS.vn", "Còn hàng")
+    const macM2 = new Product('https://iphonehungvuong.com/upload/product/220709100037-macbook-air-m2-256gb-16gb-ram1-removebg-preview-2895.png', "Apple MacBook Air M2 2024", 22890000, "Laptop", "Máy mới 100%, đầy đủ phụ kiện từ nhà sản xuất. Sản phẩm có mã SA/A (được Apple Việt Nam phân phối chính thức).\n" +
+        "Máy, Sách HDSD, Cáp sạc USB-C (2 m), Cốc sạc USB-C 30W" +
+        "1 ĐỔI 1 trong 30 ngày nếu có lỗi phần cứng nhà sản xuất. Bảo hành 12 tháng tại trung tâm bảo hành chính hãng Apple: CareS.vn(xem chi tiết)", "Sắp về hàng");
+
+    const products = [];
+    products.push(iphone16, samsungS24Ultra, macM2);
 
     function displayProduct() {
         const tableData = document.getElementById('tableData');
         let data = '';
-        for (let i = 0; i < productList.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             data += `<tr>
-                    <td><img src="${productList[i].image}" alt="image" width="150"></td>
-                    <td>${productList[i].name}</td>
-                    <td><span class="hightlight">${productList[i].price}</span></td>
-                    <td>${productList[i].category}</td>
-                    <td>${productList[i].description}</td>
-                    <td><b>${productList[i].status}</b></td>
-                    <td><button onclick="editProduct" type="button" class="btn btn-primary">Sửa</button><button onclick="deleteProduct" type="button" class="btn btn-danger">Xóa</button></td>
+                    <td><img src="${products[i].image}" alt="image" width="200"></td>
+                    <td><strong>${products[i].name}</strong></td>
+                    <td><p style="color: red"><span class="hightlight">${products[i].price}</span> đ</p></td>
+                    <td>${products[i].category}</td>
+                    <td>${products[i].description}</td>
+                    <td><b>${products[i].status}</b></td>
+                    <td><button onclick="editProduct(${i})" type="button" class="btn btn-primary">Sửa</button><button onclick="deleteProduct(${i})" type="button" class="btn btn-danger">Xóa</button></td>
                 </tr>`
         }
         tableData.innerHTML = data;
     }
 
     displayProduct();
+    let indexProduct = -1;
 
     function saveProduct() {
-        const img = document.getElementById('img').value;
+        const image = document.getElementById('image').value;
         const name = document.getElementById('name').value;
         const price = document.getElementById('price').value;
         const category = document.getElementById('category').value;
         const description = document.getElementById('description').value;
         const status = document.getElementById('status').value;
-        const newProduct = new Product(img, name, price, category, description, status);
-        productList.push(newProduct);
+        if (isNaN(price) || price <= 0) {
+            alert("Giá sản phẩm phải là một số dương!");
+            return;
+        }
+        if (name.length > 100) {
+            alert("Tên sản phẩm không quá 100 ký tự!");
+            return;
+        }
+        if (indexProduct !== -1) {
+            products[indexProduct].image = image;
+            products[indexProduct].name = name;
+            products[indexProduct].price = price;
+            products[indexProduct].description = description;
+            products[indexProduct].status = status;
+            products[indexProduct].category = category;
+        } else {
+            const newProduct = new Product(image, name, price, category, description, status);
+            products.push(newProduct);
+        }
+
+
         displayProduct();
         document.getElementById('productForm').reset();
+        indexProduct = -1;
+
+
     }
+
+    function deleteProduct(item) {
+        if (confirm(`Bạn có muốn xóa sản phẩm "${products[item].name}" không ?`)) {
+            products.splice(item, 1);
+            displayProduct();
+        }
+    }
+
+    function editProduct(item) {
+        indexProduct = item;
+        document.getElementById('image').value = products[item].image;
+        document.getElementById('name').value = products[item].name;
+        document.getElementById('price').value = products[item].price;
+        document.getElementById('description').value = products[item].description;
+        document.getElementById('category').value = products[item].category;
+        document.getElementById('status').value = products[item].status;
+    }
+
+    function handleSearch() {
+        const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        const tableData = document.getElementById('tableData');
+        let filteredProducts = products.filter(product =>
+            product.name.toLowerCase().includes(query)
+        );
+
+
+        if (filteredProducts.length > 0) {
+            let data = '';
+            for (let i = 0; i < filteredProducts.length; i++) {
+                data += `<tr>
+                    <td><img src="${filteredProducts[i].image}" alt="image" width="200"></td>
+                    <td><strong>${filteredProducts[i].name}</strong></td>
+                    <td><p style="color: red"><span class="hightlight">${filteredProducts[i].price}</span> đ</p></td>
+                    <td>${filteredProducts[i].category}</td>
+                    <td>${filteredProducts[i].description}</td>
+                    <td><b>${filteredProducts[i].status}</b></td>
+                    <td><button onclick="editProduct(${i})" type="button" class="btn btn-primary">Sửa</button><button onclick="deleteProduct(${i})" type="button" class="btn btn-danger">Xóa</button></td>
+                </tr>`
+            }
+            tableData.innerHTML = data;
+        } else {
+            tableData.innerHTML = `<tr><td colspan="7">Không tìm thấy sản phẩm nào.</td></tr>`;
+        }
+    }
+
 </script>
 </body>
 </html>

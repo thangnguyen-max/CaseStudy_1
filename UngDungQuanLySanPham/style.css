@@ -8,3 +8,7 @@ table, th, td {
     font-weight: bold
 }
 
+.form-container{
+    display: flex;
+    gap:20px;
+}
