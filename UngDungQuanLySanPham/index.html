@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="p-3 mb-2 bg-dark text-white">
-    <h2><b>Trang quản lý sản phẩm</b></h2><br>
+    <h2><b>PRODUCT MANAGEMENT PAGE</b></h2><br>
     <div class="input-group mb-3" style="width: 40%;">
         <input id="searchInput" type="text" class="form-control" placeholder="Enter the product name"
                aria-label="Recipient's username"
@@ -118,11 +118,12 @@
 </div>
 
 <script>
+
     class Product {
         constructor(image, name, price, category, description, status) {
             this.image = image;
             this.name = name;
-            this.price = price;
+            this.price = formatCurrency(price);
             this.category = category;
             this.description = description;
             this.status = status;
@@ -137,6 +138,11 @@
 
     const products = [];
     products.push(iphone16, samsungS24Ultra, macM2);
+
+    function formatCurrency(amount) {
+        // Chuyển giá trị thành chuỗi và sử dụng biểu thức chính quy để phân tách
+        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " VND";
+    }
 
     function displayProduct() {
         const tableData = document.getElementById('tableData');
@@ -191,10 +197,37 @@
             showAlert();
             return;
         }
+        if (status === "-Chọn trạng thái-") {
+            function showAlert() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please update the product status',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            showAlert();
+            return;
+        }
+        if (category === "-Chọn danh mục-") {
+            function showAlert() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please select a category',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            showAlert();
+            return;
+        }
+
         if (indexProduct !== -1) {
             products[indexProduct].image = image;
             products[indexProduct].name = name;
-            products[indexProduct].price = price;
+            products[indexProduct].price = formatCurrency(price);
             products[indexProduct].description = description;
             products[indexProduct].status = status;
             products[indexProduct].category = category;
@@ -282,6 +315,7 @@
         } else {
             tableData.innerHTML = `<tr><td colspan="7">No products found.</td></tr>`;
         }
+
     }
 
 </script>
